@@ -1,0 +1,80 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion ver.compileSdkVersion
+    defaultConfig {
+        minSdkVersion ver.minSdkVersion
+        targetSdkVersion ver.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$ver.espresso_core"
+
+    //基础库
+    api project(':common')
+
+    //权限请求
+    api "com.yanzhenjie:permission:$ver.permission"
+
+    //okgo
+    api "com.lzy.net:okgo:$ver.okgoVer"
+
+    //logger
+    //    api "com.orhanobut:logger:$ver.logger"
+
+    //二维码
+    api "cn.yipianfengye.android:zxing-library:$ver.zxing"
+
+    //友盟分享
+
+    //    api files('libs/umeng-share-core-6.9.3.jar')
+
+    //    api files('libs/umeng-sharetool-6.9.3.jar')
+
+    //    api files('libs/umeng-share-wechat-simplify-6.9.3.jar')
+
+    //    api files('libs/umeng-share-QQ-simplify-6.9.3.jar')
+
+    //    api files('libs/umeng-share-sina-simplify-6.9.3.jar')
+
+    //图片选择器
+    api 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+
+    //腾讯浏览服务X5
+    api files('libs/tbs_sdk_thirdapp_v3.2.0.1104_43200_sharewithdownload_withfilereader_withoutGame_obfs_20170609_115346.jar')
+
+    //滚轮
+    api "cn.aigestudio.wheelpicker:WheelPicker:$ver.wheelPicker"
+
+    //liteorm数据库
+    api files('libs/lite-orm-1.9.1.jar')
+
+    //阿里OSS
+    api 'com.aliyun.dpa:oss-android-sdk:+'
+    
+    //蒲公英版本更新
+    api 'com.pgyersdk:sdk:3.0.2'
+
+    //阿里热修复
+    api 'com.aliyun.ams:alicloud-android-hotfix:3.2.6'
+}
+
+
+

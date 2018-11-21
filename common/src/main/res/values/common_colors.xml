@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">@color/white</color>
+    <color name="colorPrimaryDark">@color/white</color>
+    <color name="colorAccent">#4C7BFF</color>
+
+    <color name="divider">#CCCCCC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="state_pressed">#E7E7E7</color>
+
+    <color name="common_btn_disable_bg">#E3E3E3</color>
+    <color name="common_et_text">#475164</color>
+    <color name="common_et_hint">#D1D1D1</color>
+
+</resources>

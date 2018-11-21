@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseDialog">
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowFrame">@null</item> <!--边框-->
+        <item name="android:windowBackground">@android:color/transparent</item> <!-- 背景透明 -->
+        <item name="android:windowNoTitle">true</item> <!--无标题-->
+        <item name="android:windowIsTranslucent">true</item> <!--半透明-->
+        <item name="android:windowIsFloating">true</item> <!--是否浮现在activity之上-->
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BaseDialogTranslucentStatus">
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowFrame">@null</item> <!--边框-->
+        <item name="android:windowBackground">@android:color/transparent</item> <!-- 背景透明 -->
+        <item name="android:windowNoTitle">true</item> <!--无标题-->
+        <item name="android:windowIsTranslucent">true</item> <!--半透明-->
+        <item name="android:windowIsFloating">true</item> <!--是否浮现在activity之上-->
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog">
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowFrame">@null</item> <!--边框-->
+        <item name="android:windowBackground">@android:color/transparent</item> <!-- 背景透明 -->
+        <item name="android:windowNoTitle">true</item> <!--无标题-->
+        <item name="android:windowIsTranslucent">true</item> <!--半透明-->
+        <item name="android:windowIsFloating">true</item> <!--是否浮现在activity之上-->
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_bottom_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_bottom_down</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog.windowAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_slide_bottom_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_bottom_down</item>
+    </style>
+
+    <!-- Toolbar主题设置-->
+    <style name="ToolBarTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorSecondary">#333333</item><!-- 添加这一句， 即可改变toolbar menu 图标的颜色-->
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:popupMenuStyle">@style/toolbarPopupStyle</item>
+        <item name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
+
+    </style>
+
+
+    <style name="ToolBarTheme.Dark" parent="@style/ThemeOverlay.AppCompat.Dark">
+        <item name="android:textColorSecondary">#333333</item><!-- 添加这一句， 即可改变toolbar menu 图标的颜色-->
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:popupMenuStyle">@style/toolbarPopupStyle</item>
+        <item name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
+        <item name="colorControlNormal">@color/white</item>
+        <!--<item name="android:actionBarSize">46dp</item>-->
+    </style>
+
+
+    <!--自定义toolbar菜单样式-->
+    <style name="toolbarPopupStyle" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
+
+        <!-- 是否覆盖锚点，默认为true，即盖住Toolbar -->
+        <item name="overlapAnchor">false</item>
+
+        <!-- 弹出层背景颜色 -->
+        <item name="android:popupBackground">@color/material_deep_teal_500</item>
+
+        <!-- 弹出层垂直方向上的偏移，负值会覆盖toolbar -->
+        <item name="android:dropDownVerticalOffset">5dp</item>
+
+        <!-- 弹出层水平方向上的偏移，即距离屏幕左边的距离，负值会导致右边出现空隙 -->
+        <item name="android:dropDownHorizontalOffset">-2dp</item>
+
+        <!--文字颜色-->
+        <item name="android:textColor">#333333</item>
+    </style>
+
+
+    <style name="MenuTextStyle">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--标题栏名字样式-->
+    <style name="tv_title_style">
+        <item name="android:textColor">#ff475164</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="tv_title_style_white">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_0_5</item>
+        <item name="android:background">@color/divider</item>
+    </style>
+
+
+    <style name="CommonBtnAble">
+        <item name="android:layout_width">@dimen/dp_311</item>
+        <item name="android:layout_height">@dimen/dp_44</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/dp_16</item>
+        <item name="android:gravity">center</item>
+        <item name="android:enabled">true</item>
+    </style>
+
+    <style name="CommonBtnDisable">
+        <item name="android:layout_width">@dimen/dp_311</item>
+        <item name="android:layout_height">@dimen/dp_44</item>
+        <item name="android:background">@color/common_btn_disable_bg</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/dp_16</item>
+        <item name="android:gravity">center</item>
+        <item name="android:enabled">false</item>
+    </style>
+
+    <style name="CommonEtStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_56</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/common_et_text</item>
+        <item name="android:textColorHint">@color/common_et_hint</item>
+        <item name="android:textSize">@dimen/dp_16</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="ZoomDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/zoom_outside_enter</item>
+        <item name="android:windowExitAnimation">@anim/zoom_inside_exit</item>
+    </style>
+
+    <style name="ShareDialogAnimation">
+        <item name="android:windowExitAnimation">@anim/zoom_inside_exit</item>
+    </style>
+
+</resources>

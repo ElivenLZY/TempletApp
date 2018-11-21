@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/no_network_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_no_network" />
+
+    <TextView
+        android:id="@+id/no_network_view_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="网络不好吧啦吧啦"
+        android:textColor="#FF333333"
+        android:textSize="12sp"
+        android:layout_marginTop="@dimen/dp_20"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/no_network_retry_view"
+            android:layout_width="@dimen/dp_64"
+            android:layout_height="@dimen/dp_28"
+            style="@style/CommonBtnAble"
+            android:text="重试"
+            android:textColor="#FFFFFFFF"
+            android:textSize="@dimen/sp_12"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/set_network_view"
+            android:layout_width="@dimen/dp_64"
+            android:layout_height="@dimen/dp_28"
+            style="@style/CommonBtnAble"
+            android:background="@drawable/common_btn_bg_set_network"
+            android:text="设置"
+            android:textColor="#FF333333"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:textSize="@dimen/sp_12"/>
+    </LinearLayout>
+</LinearLayout>

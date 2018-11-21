@@ -1,0 +1,117 @@
+apply plugin: 'com.android.application'
+apply plugin: 'channel'
+
+channel {
+    //指定渠道文件
+    channelFile = file("..channel.txt")
+    //多渠道包的输出目录，默认为new File(project.buildDir,"channel")
+    baseOutputDir = new File(project.projectDir, "channel")
+    //多渠道包的命名规则，默认为：${appName}-${versionName}-${versionCode}-${flavorName}-${buildType}
+    apkNameFormat = '${appId}-${versionName}-${flavorName}-${buildType}'
+    //快速模式：生成渠道包时不进行校验（速度可以提升10倍以上，默认为false）
+    isFastMode = false
+    //buildTime的时间格式，默认格式：yyyyMMdd-HHmmss
+    buildTimeDateFormat = 'yyyyMMdd-HH:mm:ss'
+    //低内存模式（仅针对V2签名，默认为false）：只把签名块、中央目录和EOCD读取到内存，不把最大头的内容块读取到内存，在手机上合成APK时，可以使用该模式
+    lowMemory = false
+}
+
+rebuildChannel {
+    channelFile = file("..channel.txt")
+    baseDebugApk = new File(project.projectDir, "baseApk/app-debug.apk")
+    baseReleaseApk = new File(project.projectDir, "baseApk/app-release.apk")
+    debugOutputDir = new File(project.projectDir, "rebuildChannel/app-debug")
+    releaseOutputDir = new File(project.projectDir, "rebuildChannel/app-release")
+    isFastMode = false
+    lowMemory = false
+}
+
+android {
+    compileSdkVersion ver.compileSdkVersion
+    defaultConfig {
+        applicationId ver.appPacageName
+        minSdkVersion ver.minSdkVersion
+        targetSdkVersion ver.targetSdkVersion
+        versionCode ver.appVersionCode
+        versionName ver.appVersionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi-v7a', 'x86'//, 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('../templetapp.jks')
+            storePassword 'templetapp123'
+            keyAlias 'templetapp'
+            keyPassword 'templetapp123'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+
+        debug {
+            storeFile file('../templetapp.jks')
+            storePassword 'templetapp123'
+            keyAlias 'templetapp'
+            keyPassword 'templetapp123'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+
+    }
+
+    buildTypes {
+        release {
+            zipAlignEnabled true
+            shrinkResources false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            zipAlignEnabled false
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation project(':thirdmodule')
+    //butterknife注解（在每个要使用该库注解的module都要引入）
+    annotationProcessor "com.jakewharton:butterknife-compiler:$ver.butterknifeVer"
+    //LeakCanary
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$ver.leakcanaryVer"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$ver.leakcanaryVer"
+    //腾讯打包
+    implementation "com.leon.channel:helper:$ver.vasDolly"
+    //腾讯bugly
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    //分包
+    implementation "com.android.support:multidex:$ver.multidex"
+
+}
