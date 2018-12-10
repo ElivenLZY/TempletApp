@@ -18,7 +18,7 @@ public class SpannableStringUtils {
      * @author lzy
      * create at 2018/9/19 10:52
      **/
-    public static CharSequence setForegroundColorSpan(CharSequence src, List<Integer> startIndexList, @ColorInt int color) {
+    public static CharSequence setForegroundColorSpan(CharSequence src,@ColorInt int color, List<Integer> startIndexList) {
         SpannableString spannableString = new SpannableString(src);
         if (!CollectionUtils.isEmpty(startIndexList)) {
             for (Integer startIndex : startIndexList) {
@@ -26,6 +26,13 @@ public class SpannableStringUtils {
                 spannableString.setSpan(colorSpan, startIndex, startIndex + 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
             }
         }
+        return spannableString;
+    }
+
+    public static CharSequence setForegroundColorSpan(CharSequence src, @ColorInt int color, int startIndex, int endIndex) {
+        SpannableString spannableString = new SpannableString(src);
+        ForegroundColorSpan colorSpan = new ForegroundColorSpan(color);
+        spannableString.setSpan(colorSpan, startIndex, endIndex, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         return spannableString;
     }
 }

@@ -33,7 +33,7 @@ ext {
             rxpermissions                   : "0.10.2",
             permission                      : "2.0.0-rc12",
             rxeasyhttp                      : "2.1.0",
-            utilcode                        : "1.21.2",
+            utilcode                        : "1.22.1",
             logger                          : "2.2.0",
             SpinKit                         : "v1.0.0",
             autosize                        : "1.0.1",

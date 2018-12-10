@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.common.utils.ToastUtils;
 import com.common.widget.dialog.BaseDialog;
@@ -194,7 +195,6 @@ public abstract class BaseDialogFragment<D extends BaseDialog> extends AppCompat
         ToastUtils.showShort(text);
     }
 
-
     @Override
     public void onDestroyView() {
         Log.d(TAG, "onDestroyView");
@@ -215,6 +215,7 @@ public abstract class BaseDialogFragment<D extends BaseDialog> extends AppCompat
     @Override
     public void onPause() {
         super.onPause();
+        getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     public void showFragment(FragmentManager manager) {

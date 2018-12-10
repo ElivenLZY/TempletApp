@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.blankj.utilcode.util.NetworkUtils;
 import com.common.R;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 /**
  * 一个方便在多种状态切换的view
+ *
  * @author lzy
  * create at 2018/10/30 14:07
  **/
@@ -81,9 +83,9 @@ public class MultipleStatusView extends FrameLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        if (isInEditMode()){
+        if (isInEditMode()) {
             showContent();
-        }else {
+        } else {
             if (isFirstShowContent) {
                 showContent();
             } else {
@@ -173,7 +175,11 @@ public class MultipleStatusView extends FrameLayout {
      * 显示错误视图
      */
     public final void showError() {
-        showError(mErrorViewResId, DEFAULT_LAYOUT_PARAMS);
+        showError("加载失败");
+    }
+
+    public final void showError(String notice) {
+        showError(mErrorViewResId, DEFAULT_LAYOUT_PARAMS, notice);
     }
 
     /**
@@ -182,8 +188,8 @@ public class MultipleStatusView extends FrameLayout {
      * @param layoutId     自定义布局文件
      * @param layoutParams 布局参数
      */
-    public final void showError(int layoutId, ViewGroup.LayoutParams layoutParams) {
-        showError(inflateView(layoutId), layoutParams);
+    public final void showError(int layoutId, ViewGroup.LayoutParams layoutParams, String notice) {
+        showError(inflateView(layoutId), layoutParams, notice);
     }
 
     /**
@@ -192,17 +198,21 @@ public class MultipleStatusView extends FrameLayout {
      * @param view         自定义视图
      * @param layoutParams 布局参数
      */
-    public final void showError(View view, ViewGroup.LayoutParams layoutParams) {
+    public final void showError(View view, ViewGroup.LayoutParams layoutParams, String notice) {
         checkNull(view, "Error view is null!");
         mViewStatus = STATUS_ERROR;
         if (null == mErrorView) {
             mErrorView = view;
-            View errorRetryView = mErrorView.findViewById(R.id.error_retry_view);
+            TextView errorRetryView = mErrorView.findViewById(R.id.error_retry_view);
             if (null != mOnRetryClickListener && null != errorRetryView) {
                 errorRetryView.setOnClickListener(mOnRetryClickListener);
             }
             mOtherIds.add(mErrorView.getId());
             addView(mErrorView, 0, layoutParams);
+        }
+        TextView errorRetryView = mErrorView.findViewById(R.id.error_retry_view);
+        if (errorRetryView != null) {
+            errorRetryView.setText(notice);
         }
         showViewById(mErrorView.getId());
     }

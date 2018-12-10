@@ -1,6 +1,7 @@
 package com.thirdmodule.imagepicker;
 
 import android.app.Activity;
+import android.support.v4.app.Fragment;
 
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
@@ -40,6 +41,19 @@ public class GalleryUtils {
 
     public static void chooseImage(Activity activity, int maxPhotoSum, List<LocalMedia> selectionMedia, int requestCode) {
         PictureSelector.create(activity)
+                .openGallery(PictureMimeType.ofImage())
+                .selectionMode(PictureConfig.MULTIPLE)
+                .maxSelectNum(maxPhotoSum)
+                .selectionMedia(selectionMedia)
+                .previewImage(true)
+                .isCamera(true)
+                .enableCrop(false)
+                .forResult(requestCode);
+
+    }
+
+    public static void chooseImage(Fragment fragment, int maxPhotoSum, List<LocalMedia> selectionMedia, int requestCode) {
+        PictureSelector.create(fragment)
                 .openGallery(PictureMimeType.ofImage())
                 .selectionMode(PictureConfig.MULTIPLE)
                 .maxSelectNum(maxPhotoSum)

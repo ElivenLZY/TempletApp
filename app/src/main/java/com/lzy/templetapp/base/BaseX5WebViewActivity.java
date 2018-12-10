@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.FileCallback;
@@ -41,7 +42,6 @@ public abstract class BaseX5WebViewActivity extends BaseActivity {
         hideQQBrowerSign();
     }
 
-
     public void initWebSettings(WebView webView, ProgressBar progressBar) {
         mWebView = webView;
         webView.setWebViewClient(new X5WebViewClient(progressBar));
@@ -72,7 +72,7 @@ public abstract class BaseX5WebViewActivity extends BaseActivity {
                     @Override
                     public void onStart(Request<File, ? extends Request> request) {
                         super.onStart(request);
-                        showShortToast("开始下载文件，请稍后...");
+                        ToastUtils.showShort("开始下载文件，请稍后...");
                     }
 
                     @Override
@@ -90,13 +90,13 @@ public abstract class BaseX5WebViewActivity extends BaseActivity {
                     @Override
                     public void onError(Response<File> response) {
                         super.onError(response);
-                        showShortToast("文件下载失败");
+                        ToastUtils.showShort("文件下载失败");
                     }
                 });
     }
 
     private void openFile(String downPath) {
-        QbSdk.openFileReader(mActivity, downPath, null, new ValueCallback<String>() {
+        QbSdk.openFileReader(this, downPath, null, new ValueCallback<String>() {
             @Override
             public void onReceiveValue(String s) {
                 finish();

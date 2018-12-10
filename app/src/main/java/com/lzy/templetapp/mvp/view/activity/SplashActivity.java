@@ -33,6 +33,12 @@ public class SplashActivity extends BaseMvpActivity<TestPresenter> implements Te
     }
 
     @Override
+    protected void initStatusBar() {
+        mImmersionBar.fullScreen(true)
+                .init();
+    }
+
+    @Override
     protected void initView() {
         //当有启动页时，程序切换到后台再切回来，会重新打开启动页
         if (!isTaskRoot()) {

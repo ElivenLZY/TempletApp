@@ -11,6 +11,7 @@ import com.litesuits.orm.db.assit.SQLiteHelper;
 import com.litesuits.orm.db.assit.WhereBuilder;
 import com.litesuits.orm.db.model.ColumnsValue;
 import com.litesuits.orm.db.model.ConflictAlgorithm;
+import com.lzy.templetapp.mvp.model.prefs.PreferencesHelperImpl;
 
 import java.util.Collection;
 import java.util.List;
@@ -44,7 +45,7 @@ public class LiteDBManager implements SQLiteHelper.OnUpdateListener {
     private LiteOrm liteOrm = null;
 
     public LiteDBManager() {
-        long userId = -1;
+        long userId = new PreferencesHelperImpl().getUserId();
         DBName = "cnst_" + userId + ".db";//一个用户一个数据库
         if (liteOrm == null) {
             DataBaseConfig config = new DataBaseConfig(UIUtils.getAppContext(), DBName);

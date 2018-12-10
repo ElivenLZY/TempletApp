@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.common.utils.ToastUtils;
 import com.common.utils.UIUtils;
@@ -354,9 +355,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Toolbar.
     @Override
     protected void onPause() {
         super.onPause();
-//        if (KeyboardUtils.isSoftInputVisible(mActivity)) {
-//            KeyboardUtils.hideSoftInput(mActivity);
-//        }
+        getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     @Override

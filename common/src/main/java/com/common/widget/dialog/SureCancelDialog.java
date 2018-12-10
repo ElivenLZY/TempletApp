@@ -68,8 +68,8 @@ public class SureCancelDialog extends BaseDialog implements View.OnClickListener
         return tvTitle;
     }
 
-    public void setContentText(String content) {
-        this.tvContent.setText(content);
+    public void setContentText(CharSequence text) {
+        this.tvContent.setText(text);
     }
 
     public TextView getContentTextView() {

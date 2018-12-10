@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.common.utils.ToastUtils;
 import com.common.utils.UIUtils;
@@ -87,10 +88,6 @@ public abstract class BaseFragment extends Fragment implements Toolbar.OnMenuIte
         setEvent();
 
         return rootView;
-    }
-
-    protected boolean autoSize() {
-        return true;
     }
 
     @Override
@@ -347,6 +344,12 @@ public abstract class BaseFragment extends Fragment implements Toolbar.OnMenuIte
         hasFetchData = false;
         isViewPrepared = false;
         unbinder.unbind();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     private void showLoadingDialog(String msg, boolean isCancelable) {

@@ -8,7 +8,20 @@ import android.text.TextWatcher;
  * Created by Administrator on 2018/4/20.
  */
 
-public class TextWatcherImpl implements TextWatcher {
+public class TextWatcherImpl<P> implements TextWatcher {
+
+    public P[] params;
+
+    public TextWatcherImpl() {
+    }
+
+    public TextWatcherImpl(P... params) {
+        this.params=params;
+    }
+
+    public void setParams(P... params) {
+        this.params = params;
+    }
 
     @Override
     public final void beforeTextChanged(CharSequence s, int start, int count, int after) {

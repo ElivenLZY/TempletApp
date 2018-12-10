@@ -21,15 +21,12 @@ public class InitAppService extends IntentService {
 
     private final String TAG = getClass().getSimpleName();
 
-    private static final String ACTION_INIT_WHEN_APP_CREATE = "ACTION_INIT_WHEN_APP_CREATE";
-
     public InitAppService() {
         super("InitAppService");
     }
 
     public static void start(Context context) {
         Intent intent = new Intent(context, InitAppService.class);
-        intent.setAction(ACTION_INIT_WHEN_APP_CREATE);
         context.startService(intent);
     }
 

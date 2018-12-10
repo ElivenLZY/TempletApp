@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Common</string>
-    <string name="common_pwd_regex">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="common_pwd_regex">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_</string>
     <string name="common_email_regex">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@.-_</string>
     <string name="common_phone_regex">0123456789</string>
-    <string name="common_number_regex">0123456789.</string>
+    <string name="common_number_regex">0123456789.,</string>
+    <string name="common_id_regex">0123456789Xx</string>
 </resources>

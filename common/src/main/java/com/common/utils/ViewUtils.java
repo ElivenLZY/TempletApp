@@ -24,7 +24,7 @@ public class ViewUtils {
         view.setDrawingCacheEnabled(true);
         Bitmap cacheBitmap = view.getDrawingCache();
         // 拷贝图片，否则在setDrawingCacheEnabled(false)以后该图片会被释放掉
-        final Bitmap newBitmap = cacheBitmap.createBitmap(cacheBitmap, 0, 0, view.getMeasuredWidth(), view.getMeasuredHeight() - view.getPaddingBottom());
+        final Bitmap newBitmap = Bitmap.createBitmap(cacheBitmap, 0, 0, view.getMeasuredWidth(), view.getMeasuredHeight() - view.getPaddingBottom());
         view.setDrawingCacheEnabled(false);
         return newBitmap;
     }

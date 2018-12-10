@@ -28,6 +28,8 @@ public abstract class BaseDialog extends AppCompatDialog implements DialogInterf
 
     protected Context mContext;
 
+    protected int gravity=Gravity.CENTER;
+
     public BaseDialog(Context context) {
         this(context, R.style.BaseDialog);
     }
@@ -36,12 +38,6 @@ public abstract class BaseDialog extends AppCompatDialog implements DialogInterf
         super(context, themeResId);
         this.mContext = context;
         onCreateView(Gravity.CENTER);
-    }
-
-    protected void doBeforeOnCreateView(int gravity) {
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setGravity(gravity);
-        setCanceledOnTouchOutside(false);
     }
 
     /**
@@ -58,6 +54,14 @@ public abstract class BaseDialog extends AppCompatDialog implements DialogInterf
         setOnShowListener(this);
         setLayoutParams(getDefaultLayoutParams());
         initView();
+        setEvent();
+    }
+
+    protected void doBeforeOnCreateView(int gravity) {
+        this.gravity=gravity;
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setGravity(gravity);
+        setCanceledOnTouchOutside(false);
     }
 
     @LayoutRes
@@ -67,8 +71,17 @@ public abstract class BaseDialog extends AppCompatDialog implements DialogInterf
 
     }
 
+    protected void setEvent() {
+
+    }
+
     protected void initAnimation() {
-        setCenterAnimation();
+        if (gravity==Gravity.CENTER){
+            setCenterAnimation();
+        }else if (gravity==Gravity.BOTTOM){
+            setBottomAnimation();
+        }
+
     }
 
     protected void setCenterAnimation() {
