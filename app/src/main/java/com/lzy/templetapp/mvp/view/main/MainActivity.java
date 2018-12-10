@@ -5,8 +5,8 @@ import android.app.Activity;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.lzy.templetapp.R;
 import com.lzy.templetapp.base.mvp.BaseMvpActivity;
-import com.lzy.templetapp.mvp.contract.TestContract;
-import com.lzy.templetapp.mvp.presenter.TestPresenter;
+import com.lzy.templetapp.mvp.contract.MainContract;
+import com.lzy.templetapp.mvp.presenter.MainPresenter;
 
 /**
  * 主页面
@@ -14,11 +14,11 @@ import com.lzy.templetapp.mvp.presenter.TestPresenter;
  * @author lzy
  * create at 2018/11/21 14:36
  **/
-public class MainActivity extends BaseMvpActivity<TestPresenter> implements TestContract.View {
+public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.View {
 
     @Override
-    protected TestPresenter createPresenter() {
-        return new TestPresenter(this);
+    protected MainPresenter createPresenter() {
+        return new MainPresenter(this);
     }
 
     @Override
