@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'channel'
+apply plugin: 'bugly'
+
+bugly {
+    appId = ""
+    appKey = ""
+}
 
 channel {
     //指定渠道文件

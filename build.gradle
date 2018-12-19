@@ -9,6 +9,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.leon.channel:plugin:2.0.1'
+        classpath 'com.tencent.bugly:symtabfileuploader:latest.release'//bugly符号表自动上传
     }
 }
 

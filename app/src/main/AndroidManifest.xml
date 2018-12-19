@@ -56,17 +56,6 @@
             android:name="PGYER_APPID"
             android:value=""></meta-data>
 
-        <!--阿里热修复-->
-        <meta-data
-            android:name="com.taobao.android.hotfix.IDSECRET"
-            android:value="" />
-        <meta-data
-            android:name="com.taobao.android.hotfix.APPSECRET"
-            android:value="" />
-        <meta-data
-            android:name="com.taobao.android.hotfix.RSASECRET"
-            android:value="" />
-
         <!-- ============================================================Services============================================================ -->
         <service android:name=".service.InitAppService">
         </service>
