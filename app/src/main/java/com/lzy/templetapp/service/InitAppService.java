@@ -1,11 +1,10 @@
 package com.lzy.templetapp.service;
 
-import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.JobIntentService;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.common.utils.ToastUtils;
 import com.common.utils.UIUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.smtt.sdk.QbSdk;
@@ -17,21 +16,17 @@ import io.reactivex.annotations.Nullable;
  * create at 2018/10/30 16:14
  **/
 
-public class InitAppService extends IntentService {
+public class InitAppService extends JobIntentService {
 
     private final String TAG = getClass().getSimpleName();
 
-    public InitAppService() {
-        super("InitAppService");
-    }
-
     public static void start(Context context) {
         Intent intent = new Intent(context, InitAppService.class);
-        context.startService(intent);
+        enqueueWork(context, InitAppService.class, 1, intent);
     }
 
     @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
+    protected void onHandleWork(@Nullable Intent intent) {
         try {
             initLeakCanary();
             initX5();
